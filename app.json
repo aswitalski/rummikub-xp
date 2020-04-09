@@ -1,0 +1,8 @@
+{
+  "name": "Start on Heroku: Rummikub XP",
+  "description": "Rummikub Node.js backend and JS client",
+  "repository": "https://github.com/aswitalski/rummikub-xp",
+  "logo": "https://cdn.rawgit.com/aswitalski/rummikub-xp/master/public/node.svg",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}

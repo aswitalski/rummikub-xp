@@ -1,0 +1,32 @@
+{
+  "name": "rummikub-xp",
+  "version": "0.0.1",
+  "description": "Rummikub XP",
+  "engines": {
+    "node": "12.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha 'test/**/*.spec.js'"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "mocha": "^7.1.1",
+    "request": "^2.88.2",
+    "tape": "^4.13.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aswitalski/rummikub-xp"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
