@@ -11,7 +11,8 @@
     "test": "mocha 'test/**/*.spec.js'"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pg": "^8.0.2"
   },
   "devDependencies": {
     "assert": "^2.0.0",
