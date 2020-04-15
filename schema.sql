@@ -3,8 +3,15 @@ CREATE TABLE players (
   name VARCHAR(30)
 );
 
+CREATE TABLE competitions (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(20)
+);
+
 CREATE TABLE games (
   id SERIAL PRIMARY KEY,
+  type VARCHAR(20),
+  competition_id INTEGER REFERENCES competitions(id),
   player_1 INTEGER REFERENCES players(id),
   player_2 INTEGER REFERENCES players(id),
   player_3 INTEGER REFERENCES players(id),
@@ -23,4 +30,17 @@ CREATE TABLE rounds (
   score_4 INTEGER,
   score_5 INTEGER,
   score_6 INTEGER
+);
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(20),
+  password VARCHAR(32)
+);
+
+CREATE TABLE tokens (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  token VARCHAR(16),
+  created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
