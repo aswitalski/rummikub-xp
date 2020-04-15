@@ -24,3 +24,16 @@ CREATE TABLE rounds (
   score_5 INTEGER,
   score_6 INTEGER
 );
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(20),
+  password VARCHAR(32)
+);
+
+CREATE TABLE tokens (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  token VARCHAR(16),
+  created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
