@@ -1,11 +1,19 @@
 CREATE TABLE players (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(30)
+  name VARCHAR(30),
+  is_primary BOOLEAN DEFAULT false
 );
 
 CREATE TABLE competitions (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(20)
+  name VARCHAR(20),
+  player_1 INTEGER REFERENCES players(id),
+  player_2 INTEGER REFERENCES players(id),
+  player_3 INTEGER REFERENCES players(id),
+  player_4 INTEGER REFERENCES players(id),
+  player_5 INTEGER REFERENCES players(id),
+  player_6 INTEGER REFERENCES players(id),
+  is_finished BOOLEAN DEFAULT false
 );
 
 CREATE TABLE games (

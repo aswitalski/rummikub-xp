@@ -52,4 +52,19 @@ module.exports = {
     }
     return null;
   },
+
+  async getPlayers() {
+    const result = await client.query('SELECT * FROM players');
+    return result.rows;
+  },
+
+  async getCompetitions() {
+    const result = await client.query('SELECT * FROM competitions');
+    return result.rows;
+  },
+
+  async getGames() {
+    const result = await client.query('SELECT * FROM games');
+    return result.rows;
+  },
 };

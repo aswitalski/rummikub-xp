@@ -20,6 +20,15 @@ express()
     .get(
         '/api/health', Authentication.secureRequestCallback,
         (req, res) => res.json(API.health()))
+    .get(
+        '/api/players', Authentication.secureRequestCallback,
+        async (req, res) => res.json(await API.players()))
+    .get(
+        '/api/competitions', Authentication.secureRequestCallback,
+        async (req, res) => res.json(await API.competitions()))
+    .get(
+        '/api/games', Authentication.secureRequestCallback,
+        async (req, res) => res.json(await API.games()))
     // account
     .post(
         '/login',
