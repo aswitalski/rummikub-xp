@@ -6,10 +6,11 @@ const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5000;
 
-const DatabaseClient = require('./src/database/client.js');
-const API = require('./src/controllers/api.js');
+const Auth = require('./src/services/auth.js');
+const Postgres = require('./src/services/postgres.js');
+
 const Account = require('./src/controllers/account.js');
-const Authentication = require('./src/auth/authentication.js');
+const API = require('./src/controllers/api.js');
 
 express()
     .use(morgan('combined'))
@@ -18,16 +19,16 @@ express()
     .use(express.static(path.join(__dirname, 'public')))
     // api
     .get(
-        '/api/health', Authentication.secureRequestCallback,
-        (req, res) => res.json(API.health()))
+        '/api/health', Auth.REQUIRE_TOKEN,
+        async (req, res) => res.json(await API.health()))
     .get(
-        '/api/players', Authentication.secureRequestCallback,
+        '/api/players', Auth.REQUIRE_TOKEN,
         async (req, res) => res.json(await API.players()))
     .get(
-        '/api/competitions', Authentication.secureRequestCallback,
+        '/api/competitions', Auth.REQUIRE_TOKEN,
         async (req, res) => res.json(await API.competitions()))
     .get(
-        '/api/games', Authentication.secureRequestCallback,
+        '/api/games', Auth.REQUIRE_TOKEN,
         async (req, res) => res.json(await API.games()))
     // account
     .post(
@@ -49,6 +50,6 @@ express()
       console.log(`  Starting Rummikub XP server on port ${PORT}`);
       console.log('--------------------------------------------');
       // init
-      Authentication.init();
-      await DatabaseClient.connect();
+      await Auth.init();
+      await Postgres.connect();
     });

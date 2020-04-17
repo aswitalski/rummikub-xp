@@ -41,8 +41,8 @@ module.exports = {
 
   async getUserByToken(token) {
     const query = {
-      text:
-          'SELECT username FROM users JOIN tokens ON users.id = tokens.user_id ' +
+      text: 'SELECT username FROM users ' +
+          'JOIN tokens ON users.id = tokens.user_id ' +
           'WHERE token = $1 AND NOW() < created_on + INTERVAL \'2 hours\'',
       values: [token],
     };

@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 
-const DatabaseClient = require('../database/client.js');
+const Postgres = require('../services/postgres.js');
 
 const salt = process.env.HASH_SALT || '';
 
@@ -14,10 +14,10 @@ module.exports = {
 
   async signIn(username, password) {
     const hash = createHash(password);
-    const user = await DatabaseClient.findUser(username, hash);
+    const user = await Postgres.findUser(username, hash);
     if (user) {
       const token = createToken();
-      await DatabaseClient.insertToken(user.id, token);
+      await Postgres.insertToken(user.id, token);
       console.log(
           `=> User "${username}" signed in, access token is "${token}"`);
       return {
