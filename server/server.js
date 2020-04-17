@@ -6,17 +6,17 @@ const bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 5000;
 
-const Auth = require('./src/services/auth.js');
-const Postgres = require('./src/services/postgres.js');
+const Auth = require('./services/auth.js');
+const Postgres = require('./services/postgres.js');
 
-const Account = require('./src/controllers/account.js');
-const API = require('./src/controllers/api.js');
+const Account = require('./controllers/account.js');
+const API = require('./controllers/api.js');
 
 express()
     .use(morgan('combined'))
     .use(bodyParser.json())
     // static
-    .use(express.static(path.join(__dirname, 'public')))
+    .use(express.static(path.join(__dirname, '../public')))
     // api
     .get(
         '/api/health', Auth.REQUIRE_TOKEN,
