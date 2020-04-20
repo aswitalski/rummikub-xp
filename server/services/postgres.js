@@ -43,12 +43,18 @@ module.exports = {
     const query = {
       text: 'SELECT username FROM users ' +
           'JOIN tokens ON users.id = tokens.user_id ' +
-          'WHERE token = $1 AND NOW() < created_on + INTERVAL \'2 hours\'',
+          'WHERE token = $1 AND NOW() < last_used_on + INTERVAL \'1 hour\'',
       values: [token],
     };
     const result = await client.query(query);
     if (result.rows.length) {
-      return result.rows[0];
+      const user = result.rows[0];
+      const update = {
+        text: 'UPDATE tokens SET last_used_on = NOW() WHERE token = $1',
+        values: [token],
+      };
+      await client.query(update);
+      return user;
     }
     return null;
   },
