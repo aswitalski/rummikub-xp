@@ -3,8 +3,16 @@
 <head>
   <title>Rummikub XP</title>
   <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="apple-touch-icon" href="joker.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="user-scalable=no">
+  <script type="text/javascript" src="toolkit.js"></script>
+  <script type="text/javascript" src="rummikub.js" type="module"></script>
 </head>
 <body>
-  Rummikub rules!
+  <script>
+    opr.Toolkit.configure({});
+    opr.Toolkit.render(Rummikub, document.body);
+  </script>
 </body>
 </html>
