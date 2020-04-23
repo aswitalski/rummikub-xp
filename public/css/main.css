@@ -6,7 +6,7 @@ html {
 
 :root {
   font: menu;
-  font-size: 48pt;
+  font-size: 42pt;
 }
 
 body {
@@ -20,7 +20,19 @@ body {
 
 main {
   display: block;
-  margin-top: 160px;
+  padding-top: 220px;
+}
+
+main::before {
+  background: url('/img/rummikub.png');
+  background-size: contain;
+  border-radius: 32px;
+  content: '';
+  display: block;
+  height: 148px;
+  margin: auto;
+  margin-bottom: 120px;
+  width: 580px;;
 }
 
 button {
@@ -29,8 +41,8 @@ button {
   border-radius: 16px;
   color: var(--font-color);
   display: block;
-  font-size: 48pt;
+  font-size: 42pt;
   margin: 64px auto 0 auto;
   min-width: 580px;
-  padding: 20px 40px;
+  padding: 24px 40px;
 }
