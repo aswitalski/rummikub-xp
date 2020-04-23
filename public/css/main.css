@@ -6,7 +6,7 @@ html {
 
 :root {
   font: menu;
-  font-size: 48pt;
+  font-size: 42pt;
 }
 
 body {
@@ -20,17 +20,60 @@ body {
 
 main {
   display: block;
-  margin-top: 160px;
+  padding-top: 220px;
+}
+
+main::before {
+  background: url('/img/rummikub.png');
+  background-size: contain;
+  border-radius: 32px;
+  content: '';
+  display: block;
+  height: 148px;
+  margin: auto;
+  margin-bottom: 120px;
+  width: 580px;
+}
+
+button,
+input  {
+  border: 5px solid var(--separator-color);
+  border-radius: 16px;
+  display: block;
+  margin: 64px auto 0 auto;
+  min-width: 580px;
+  padding: 24px 40px;
 }
 
 button {
   background-color: #20262b;
-  border: 5px solid var(--separator-color);
-  border-radius: 16px;
   color: var(--font-color);
+  font-size: 42pt;
+}
+
+input {
+  font-size: 36px;
+  height: 42pt;
+  line-height: 42pt;
+}
+
+input::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+.error {
+  color: red;
   display: block;
-  font-size: 48pt;
-  margin: 64px auto 0 auto;
-  min-width: 580px;
-  padding: 20px 40px;
+  margin: 120px auto 0 auto;
+  text-align: center;
+}
+
+form {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
+
+form button {
+  margin-top: 120px;
 }
